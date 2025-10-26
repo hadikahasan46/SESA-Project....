@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MAIDAN — Turf Booking</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --nav: #0a7a35;
+      --accent: #1db954;
+      --muted: #a9d9af;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #0b2b2a;
+      background: url('front.jpg') no-repeat center center/cover;
+      min-height: 100vh;
+      background-attachment: fixed;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .overlay {
+      background: rgba(0, 0, 0, 0.4);
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 10px;
+      padding: 12px 18px;
+      backdrop-filter: blur(8px);
+    }
+
+    .brand { display: flex; align-items: center; gap: 10px; }
+
+    .logo {
+      width: 60px;
+      height: 50px;
+      border-radius: 8px;
+      background: linear-gradient(90deg, var(--nav), #13a14b);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: 700;
+      font-size: 20px;
+      box-shadow: 0 0 10px rgba(29,185,84,0.6);
+    }
+
+    .brand-text { color: #e8ffe8; font-weight: 700; font-size: 18px; }
+
+    nav { display: flex; align-items: center; gap: 10px; }
+
+    nav a, .cta, .register-btn {
+      text-decoration: none;
+      color: #e8ffe8;
+      font-weight: 600;
+      padding: 8px 14px;
+      border-radius: 8px;
+      transition: 0.3s;
+    }
+
+    nav a:hover, .cta:hover, .register-btn:hover {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 0 10px var(--accent);
+      transform: scale(1.05);
+    }
+
+    .cta, .register-btn { border: none; cursor: pointer; background: rgba(255,255,255,0.15); }
+
+    .hero { text-align: center; color: #fff; margin-top: 80px; }
+    .hero h1 { font-size: 42px; text-shadow: 0 0 10px rgba(0,0,0,0.6); color: #d4ffd6; }
+    .hero p { margin-top: 10px; color: #eaffea; font-size: 18px; }
+
+    .quote-section { text-align: center; margin-top: 60px; color: #eaffea; }
+    .quote-section p { font-size: 20px; font-style: italic; color: #ccffcc; }
+    .quote-section span { display: block; margin-top: 8px; font-size: 14px; color: #9df29d; }
+
+    .search-bar { margin-top: 20px; display: flex; justify-content: center; }
+    .search-bar input {
+      width: 300px;
+      padding: 10px 12px;
+      border-radius: 8px 0 0 8px;
+      border: none;
+      outline: none;
+      font-size: 16px;
+      background: rgba(255,255,255,0.9);
+    }
+    .search-bar button {
+      background: var(--accent);
+      border: none;
+      padding: 10px 16px;
+      color: white;
+      font-weight: 600;
+      border-radius: 0 8px 8px 0;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .search-bar button:hover { background: #14a04a; box-shadow: 0 0 10px #14a04a; }
+
+    footer { margin-top: 60px; text-align: center; color: #d0ffd0; padding: 12px; background: rgba(0, 0, 0, 0.4); border-radius: 8px; }
+
+    .popup-container { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); justify-content: center; align-items: center; z-index: 999; }
+    .popup-box { background: #e8ffe8; padding: 25px; border-radius: 12px; box-shadow: 0 0 15px #0a7a35; width: 300px; text-align: center; position: relative; animation: fadeIn 0.4s ease; }
+    .popup-box h2 { color: #0a7a35; margin-bottom: 15px; }
+    .popup-box input { width: 90%; margin: 8px 0; padding: 8px; border-radius: 6px; border: 1px solid #0a7a35; }
+    .popup-box button { margin-top: 10px; background: #0a7a35; color: white; border: none; padding: 8px 14px; border-radius: 8px; cursor: pointer; transition: 0.3s; }
+    .popup-box button:hover { background: #14a04a; }
+    #switch-text { margin-top: 10px; font-size: 14px; }
+    #switch-link { color: #0a7a35; cursor: pointer; font-weight: 600; }
+    #close-popup { position: absolute; top: 10px; right: 10px; background: transparent; color: #0a7a35; font-size: 18px; border: none; cursor: pointer; }
+
+    @keyframes fadeIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+
+    @media (max-width: 600px) { nav { display: none; } .hero h1 { font-size: 28px; } }
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <header>
+      <div class="brand">
+        <div class="logo">MD</div>
+        <div class="brand-text">MAIDAN — Turf Booking</div>
+      </div>
+
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="Review.html">Review</a>
+        <a href="admin.html">Admin</a>
+        <button class="cta">Login</button>
+        <button class="register-btn">Register</button>
+      </nav>
+    </header>
+
+    <section class="hero" id="home">
+      <h1>Welcome to MAIDAN</h1>
+      <p>Where Every Game Begins with Green Energy 🌿</p>
+    </section>
+
+    <section class="quote-section">
+      <p>“Science knows no country, because knowledge belongs to humanity.”</p>
+      <span>— Louis Pasteur</span>
+
+      <!-- SEARCH BAR WITH OPTIONS -->
+      <div class="search-bar">
+        <input list="turf-options" id="turfInput" placeholder="Search your favorite turf..." />
+        <datalist id="turf-options">
+          <option value="Cricket Turf">
+          <option value="Football Turf">
+          <option value="Badminton Ground">
+          <option value="Swimming Pool">
+          <option value="Tennis Court">
+          <option value="Basketball Court">
+          <option value="Hockey Field">
+          
+        </datalist>
+        <button onclick="searchTurf()">Search</button>
+      </div>
+    </section>
+
+    <footer>
+      © 2025 MAIDAN — Play. Book. Win. 🌱
+    </footer>
+  </div>
+
+  <!-- LOGIN & REGISTER POPUP -->
+  <div id="popup" class="popup-container">
+    <div class="popup-box">
+      <h2 id="popup-title">Login</h2>
+      <input type="text" placeholder="Username or Email" id="username" />
+      <input type="password" placeholder="Password" id="password" />
+      <button id="submit-btn">Submit</button>
+      <p id="switch-text">Don’t have an account? <span id="switch-link">Register</span></p>
+      <button id="close-popup">✖</button>
+    </div>
+  </div>
+
+  <script>
+    // Login/Register Popup Logic
+    const loginBtn = document.querySelector('.cta');
+    const registerBtn = document.querySelector('.register-btn');
+    const popup = document.getElementById('popup');
+    const popupTitle = document.getElementById('popup-title');
+    const switchText = document.getElementById('switch-text');
+    const closePopup = document.getElementById('close-popup');
+
+    let mode = 'login';
+
+    loginBtn.addEventListener('click', () => {
+      mode = 'login';
+      popupTitle.textContent = 'Login';
+      switchText.innerHTML = 'Don’t have an account? <span id="switch-link">Register</span>';
+      popup.style.display = 'flex';
+      attachSwitch();
+    });
+
+    registerBtn.addEventListener('click', () => {
+      mode = 'register';
+      popupTitle.textContent = 'Register';
+      switchText.innerHTML = 'Already have an account? <span id="switch-link">Login</span>';
+      popup.style.display = 'flex';
+      attachSwitch();
+    });
+
+    closePopup.addEventListener('click', () => popup.style.display = 'none');
+
+    function attachSwitch() {
+      document.getElementById('switch-link').addEventListener('click', () => {
+        if (mode === 'login') registerBtn.click();
+        else loginBtn.click();
+      });
+    }
+
+    // ✅ Search Redirect Logic
+    function searchTurf() {
+      const value = document.getElementById("turfInput").value.toLowerCase();
+
+      if (value.includes("cricket")) {
+        window.location.href = "cricket.html";
+      } 
+      else if (value.includes("football")) {
+        window.location.href = "football.html";
+      } 
+      else if (value.includes("badminton")) {
+        window.location.href = "badminton.html";
+      } 
+      else if (value.includes("pool")) {
+        window.location.href = "pool.html";
+      } 
+      else if (value.includes("tennis")) {
+        window.location.href = "tennis.html";
+      } 
+      else {
+        alert("Sorry, no matching turf found!");
+      }
+    }
+  </script>
+</body>
+</html>

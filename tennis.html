@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tennis Courts — MAIDAN</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(rgba(10,122,53,0.45), rgba(0,0,0,0.6)), url('tennisback.jpeg') no-repeat center center/cover;
+  background-attachment: fixed;
+  color: #0a7a35;
+  margin: 0;
+  padding: 0;
+}
+
+/* Header */
+header {
+  background: rgba(10,122,53,0.92);
+  color: #fff;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+}
+
+header a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 15px;
+  font-weight: 600;
+}
+
+h1 {
+  text-align: center;
+  margin: 30px 0;
+  color: #f5fff5;
+  text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+/* Card grid */
+.turf-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 25px;
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px;
+}
+
+.turf-card {
+  background: rgba(255,255,255,0.9);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0,0,0,0.25);
+  transition: 0.3s;
+  backdrop-filter: blur(4px);
+}
+
+.turf-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 20px rgba(10,122,53,0.6);
+}
+
+.turf-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.turf-info {
+  padding: 15px;
+}
+
+.status {
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.available {
+  color: #14a04a;
+}
+
+.booked {
+  color: #c0392b;
+}
+
+.price {
+  font-size: 16px;
+  margin: 8px 0;
+  color: #0a7a35;
+}
+
+ul.equipment {
+  list-style: square;
+  padding-left: 20px;
+  margin-top: 10px;
+  color: #0a7a35;
+}
+
+.location {
+  background: rgba(255,255,255,0.8);
+  display: inline-block;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-weight: 600;
+  color: #0a7a35;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-bottom: 15px;
+}
+
+.location:hover {
+  background: rgba(20,160,74,0.8);
+  color: #fff;
+  text-decoration: none;
+}
+
+button {
+  background: #0a7a35;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 14px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 10px;
+}
+
+button:hover {
+  background: #14a04a;
+}
+
+button:disabled {
+  background: #ccc;
+  color: #666;
+  cursor: not-allowed;
+}
+
+.section {
+  max-width: 900px;
+  margin: 40px auto;
+  background: rgba(255,255,255,0.9);
+  padding: 25px;
+  border-radius: 14px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  backdrop-filter: blur(3px);
+}
+
+.section h2 {
+  color: #0a7a35;
+  margin-bottom: 10px;
+}
+
+.section p {
+  color: #0a7a35;
+}
+
+footer {
+  text-align: center;
+  background: rgba(10,122,53,0.9);
+  color: #fff;
+  padding: 15px;
+  margin-top: 30px;
+  box-shadow: 0 -3px 8px rgba(0,0,0,0.2);
+}
+</style>
+</head>
+
+<body>
+<header>
+  <div class="logo">MAIDAN</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="admin.html">Admin</a>
+  </nav>
+</header>
+
+<h1>Tennis Courts</h1>
+
+<div class="turf-container">
+  <!-- Tennis Court A -->
+  <div class="turf-card">
+    <a href="tennisA.html">
+      <img src="tennis1.jpeg" alt="Tennis Court A">
+    </a>
+    <div class="turf-info">
+      <h3>Tennis Court A</h3>
+      <p class="status available">Status: Available ✅</p>
+      <p class="price">Price: ৳1500 per 2-hour session</p>
+      <p class="location">Location: Gulshan, Dhaka, Bangladesh</p>
+
+      <h4>Equipment Available:</h4>
+      <ul class="equipment">
+        <li>Rackets & balls</li>
+        <li>Net system</li>
+        <li>Scoreboard</li>
+        <li>Seating area</li>
+      </ul>
+      <button onclick="alert('Tennis Court A booked successfully!')">Book Now</button>
+    </div>
+  </div>
+
+  <!-- Tennis Court B -->
+  <div class="turf-card">
+    <a href="tennisB.html">
+      <img src="tennis2.jpeg" alt="Tennis Court B">
+    </a>
+    <div class="turf-info">
+      <h3>Tennis Court B</h3>
+      <p class="status booked">Status: Booked until 26 Oct 2025 ❌</p>
+      <p class="price">Price: ৳1800 per 2-hour session</p>
+      <p class="location">Location: Banani, Dhaka, Bangladesh</p>
+
+      <h4>Equipment Available:</h4>
+      <ul class="equipment">
+        <li>Rackets & balls</li>
+        <li>LED lights</li>
+        <li>Changing rooms</li>
+        <li>Scoreboard</li>
+      </ul>
+      <button disabled>Booked</button>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h2>Available Slots / Prices</h2>
+  <p><strong>Morning:</strong> 8:00 AM - 10:00 AM (৳1500)</p>
+  <p><strong>Afternoon:</strong> 2:00 PM - 4:00 PM (৳1500)</p>
+  <p><strong>Evening:</strong> 5:00 PM - 7:00 PM (৳1800)</p>
+</div>
+
+<div class="section">
+  <h2>Reviews</h2>
+  <p>⭐ “Great courts and well maintained!” — <em>Rahim</em></p>
+  <p>⭐ “Enjoyed playing with friends here.” — <em>Sami</em></p>
+</div>
+
+<div class="section">
+  <h2>Complaints</h2>
+  <p>⚠️ “Lights were dim last evening.” — <em>Jamil</em></p>
+</div>
+
+<footer>
+  © 2025 MAIDAN — Play. Book. Win. 🎾
+</footer>
+</body>
+</html>

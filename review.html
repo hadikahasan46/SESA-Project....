@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>MAIDAN — Customer Feedback</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --nav: #0a7a35;
+    --accent: #1db954;
+    --bright: #fff;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Poppins', sans-serif;
+    color: #0b2b2a;
+    background: url('front.jpg') no-repeat center center/cover;
+    min-height: 100vh;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .overlay { background: rgba(0,0,0,0.5); min-height: 100vh; padding: 20px; }
+
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(255,255,255,0.15);
+    border-radius: 10px;
+    padding: 12px 18px;
+    backdrop-filter: blur(8px);
+    margin-bottom: 30px;
+  }
+
+  .brand { display: flex; align-items: center; gap: 10px; }
+  .logo {
+    width: 60px; height: 50px;
+    border-radius: 8px;
+    background: linear-gradient(90deg, var(--nav), #13a14b);
+    color: white;
+    display: flex; justify-content: center; align-items: center;
+    font-weight: 700; font-size: 20px;
+    box-shadow: 0 0 10px rgba(29,185,84,0.6);
+  }
+  .brand-text { color: #e8ffe8; font-weight: 700; font-size: 18px; }
+
+  nav { display: flex; align-items: center; gap: 10px; }
+  nav a { text-decoration: none; color: #e8ffe8; font-weight: 600; padding: 8px 14px; border-radius: 8px; transition: 0.3s; }
+  nav a:hover { background: var(--accent); color: #fff; box-shadow: 0 0 10px var(--accent); transform: scale(1.05); }
+
+  h1 { text-align: center; color: #d4ffd6; margin-top: 20px; font-size: 36px; text-shadow: 0 0 10px rgba(0,0,0,0.6); }
+
+  .feedback-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+  }
+
+  .feedback-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 48%;
+  }
+
+  .feedback-form h2 {
+    color: var(--accent); /* bright green */
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  .feedback-form input, .feedback-form textarea {
+    width: 100%;
+    margin: 8px 0;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #0a7a35;
+    font-size: 16px;
+  }
+  .feedback-form textarea { height: 100px; resize: none; }
+  .feedback-form button { padding: 10px 20px; margin-top: 10px; background: #0a7a35; color: #fff; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; transition: 0.3s; }
+  .feedback-form button:hover { background: #14a04a; }
+
+  .feedback-display { margin-top: 15px; display: flex; flex-direction: column; gap: 10px; width: 100%; }
+
+  .feedback-box { background: rgba(255,255,255,0.1); padding: 12px; border-radius: 10px; width: 100%; color: #eaffea; text-align: center; font-style: italic; transition: 0.3s; }
+  .feedback-box:hover { background: rgba(29,185,84,0.15); box-shadow: 0 0 12px #1db954; transform: scale(1.02); }
+
+  .placeholder { color: var(--bright); font-style: italic; }
+
+  footer { margin-top: 60px; text-align: center; color: #d0ffd0; padding: 12px; background: rgba(0,0,0,0.4); border-radius: 8px; }
+
+  @media(max-width:800px){
+    .feedback-container { flex-direction: column; }
+    .feedback-form { width: 100%; }
+  }
+</style>
+</head>
+<body>
+  <div class="overlay">
+    <header>
+      <div class="brand">
+        <div class="logo">MD</div>
+        <div class="brand-text">MAIDAN — Turf Booking</div>
+      </div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="review.html">Reviews & Complaints</a>
+      </nav>
+    </header>
+
+    <h1>Customer Feedback</h1>
+
+    <div class="feedback-container">
+      <!-- Reviews -->
+      <div class="feedback-form">
+        <h2>Reviews</h2>
+        <input type="text" id="name" placeholder="Your Name" />
+        <textarea id="review" placeholder="Write your review here..."></textarea>
+        <button onclick="submitReview()">Submit Review</button>
+        <div class="feedback-display" id="reviews-display">
+          <div class="feedback-box placeholder">No reviews yet. Be the first to share your experience!</div>
+        </div>
+      </div>
+
+      <!-- Complaints -->
+      <div class="feedback-form">
+        <h2>Complaints</h2>
+        <input type="text" id="cname" placeholder="Your Name" />
+        <textarea id="complain" placeholder="Write your complaint here..."></textarea>
+        <button onclick="submitComplain()">Submit Complaint</button>
+        <div class="feedback-display" id="complains-display">
+          <div class="feedback-box placeholder">No complaints yet.</div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      © 2025 MAIDAN — Play. Book. Win. 🌱
+    </footer>
+  </div>
+
+<script>
+function submitReview() {
+  const name = document.getElementById('name').value.trim();
+  const review = document.getElementById('review').value.trim();
+  if(name === "" || review === "") { alert("Please fill in both name and review."); return; }
+
+  const display = document.getElementById('reviews-display');
+  const placeholder = display.querySelector('.placeholder');
+  if(placeholder) placeholder.remove();
+
+  const newDiv = document.createElement('div');
+  newDiv.classList.add('feedback-box');
+  newDiv.innerHTML = `“${review}” — ${name}`;
+  display.appendChild(newDiv);
+
+  document.getElementById('name').value = "";
+  document.getElementById('review').value = "";
+}
+
+function submitComplain() {
+  const name = document.getElementById('cname').value.trim();
+  const complain = document.getElementById('complain').value.trim();
+  if(name === "" || complain === "") { alert("Please fill in both name and complaint."); return; }
+
+  const display = document.getElementById('complains-display');
+  const placeholder = display.querySelector('.placeholder');
+  if(placeholder) placeholder.remove();
+
+  const newDiv = document.createElement('div');
+  newDiv.classList.add('feedback-box');
+  newDiv.innerHTML = `“${complain}” — ${name}`;
+  display.appendChild(newDiv);
+
+  document.getElementById('cname').value = "";
+  document.getElementById('complain').value = "";
+}
+</script>
+</body>
+</html>

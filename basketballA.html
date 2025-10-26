@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Basketball Court — MAIDAN</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #0a7a35;
+  background: linear-gradient(rgba(10,122,53,0.35), rgba(0,0,0,0.4)), url('basketballback.jpeg') no-repeat center center/cover;
+  background-attachment: fixed;
+}
+
+/* Header */
+header {
+  background: rgba(10,122,53,0.92);
+  color: #fff;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+}
+
+header a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 15px;
+  font-weight: 600;
+}
+
+h1 {
+  text-align: center;
+  margin: 30px 0;
+  color: #f5fff5;
+  text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+/* Court card */
+.turf-card {
+  max-width: 700px;
+  background: rgba(255,255,255,0.9);
+  margin: 40px auto;
+  border-radius: 14px;
+  padding: 25px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  text-align: center;
+}
+
+.turf-card img {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.turf-card img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 30px rgba(10,122,53,0.6);
+}
+
+.status { font-weight: 700; margin-bottom: 10px; }
+.available { color: #14a04a; }
+.booked { color: #c0392b; }
+
+.price { font-size: 16px; margin: 8px 0; color: #0a7a35; }
+
+ul.equipment { list-style: square; padding-left: 20px; margin-top: 10px; color: #0a7a35; text-align: left; }
+
+.location {
+  background: rgba(255,255,255,0.8);
+  display: inline-block;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-weight: 600;
+  color: #0a7a35;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-bottom: 15px;
+}
+
+.location:hover {
+  background: rgba(20,160,74,0.8);
+  color: #fff;
+  text-decoration: none;
+}
+
+button {
+  background: #0a7a35;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 15px;
+}
+
+button:hover { background: #14a04a; }
+button:disabled { background: #ccc; color: #666; cursor: not-allowed; }
+
+/* Separate Cards for Slots, Reviews, Complaints */
+.section {
+  max-width: 700px;
+  margin: 20px auto;
+  background: rgba(255,255,255,0.9);
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.section h2 { color: #0a7a35; margin-bottom: 10px; }
+.section p { color: #0a7a35; margin: 5px 0; }
+
+footer {
+  text-align: center;
+  background: rgba(10,122,53,0.9);
+  color: #fff;
+  padding: 15px;
+  margin-top: 30px;
+  box-shadow: 0 -3px 8px rgba(0,0,0,0.2);
+}
+</style>
+</head>
+
+<body>
+<header>
+  <div class="logo">MAIDAN</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="admin.html">Admin</a>
+  </nav>
+</header>
+
+<h1>Basketball Court</h1>
+
+<!-- Main Court Card -->
+<div class="turf-card">
+  <a href="basketballA.html">
+    <img src="basketball1.jpeg" alt="Basketball Court A">
+  </a>
+
+  <h3>Basketball Court A</h3>
+  <p class="status available">Status: Available ✅</p>
+  <p class="price">Price: ৳1800 per 2-hour session</p>
+  <p class="location">Location: Gulshan, Dhaka, Bangladesh</p>
+
+  <h4>Equipment Available:</h4>
+  <ul class="equipment">
+    <li>Basketballs</li>
+    <li>Hoops & nets</li>
+    <li>Scoreboard</li>
+    <li>Changing area</li>
+  </ul>
+
+  <button onclick="alert('Basketball Court A booked successfully!')">Book Now</button>
+</div>
+
+<!-- Available Slots Card -->
+<div class="section">
+  <h2>Available Slots / Prices</h2>
+  <p><strong>Morning:</strong> 6:00 AM - 8:00 AM (৳1200)</p>
+  <p><strong>Afternoon:</strong> 12:00 PM - 2:00 PM (৳1200)</p>
+  <p><strong>Evening:</strong> 4:00 PM - 6:00 PM (৳1500)</p>
+</div>
+
+<!-- Reviews Card -->
+<div class="section">
+  <h2>Reviews</h2>
+  <p>⭐ “Clean court and very well maintained!” — <em>Shamim</em></p>
+  <p>⭐ “Excellent facilities and helpful staff.” — <em>Nazma</em></p>
+</div>
+
+<!-- Complaints Card -->
+<div class="section">
+  <h2>Complaints</h2>
+  <p>⚠️ “Floor was slippery last session.” — <em>Tanvir</em></p>
+</div>
+
+<footer>
+  © 2025 MAIDAN — Play. Book. Win. 🏀
+</footer>
+</body>
+</html>

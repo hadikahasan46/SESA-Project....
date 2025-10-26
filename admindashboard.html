@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Admin Dashboard — MAIDAN</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+body { font-family: 'Poppins', sans-serif; background:#0a7a35; color:#fff; padding:20px; }
+h1 { text-align:center; margin-bottom:30px; }
+.section { margin-bottom:40px; }
+.feedback-box, .booking-box { background: rgba(255,255,255,0.1); padding:12px; border-radius:10px; margin-bottom:10px; color:#eaffea; display:flex; justify-content:space-between; align-items:center; }
+button { padding:5px 10px; border:none; border-radius:6px; cursor:pointer; background:#1db954; color:#fff; margin-left:10px; }
+</style>
+</head>
+<body>
+<h1>Admin Dashboard</h1>
+
+<!-- Reviews -->
+<div class="section">
+  <h2>Reviews</h2>
+  <div id="all-reviews"><p>No reviews yet.</p></div>
+</div>
+
+<!-- Complaints -->
+<div class="section">
+  <h2>Complaints</h2>
+  <div id="all-complaints"><p>No complaints yet.</p></div>
+</div>
+
+<!-- Turf Bookings -->
+<div class="section">
+  <h2>Turf Bookings</h2>
+  <div id="all-bookings"><p>No bookings yet.</p></div>
+</div>
+
+<script>
+// sample data
+const reviews = [
+  {name:"Alice", review:"Great turf!"},
+  {name:"Bob", review:"Booking process was smooth."}
+];
+
+const complaints = [
+  {name:"Charlie", complain:"Lights were off."}
+];
+
+// turf bookings data with payment mode
+const bookings = [
+  {turf:"Turf A", date:"2025-10-25", amount:2000, payment:"Card"},
+  {turf:"Turf B", date:"2025-10-26", amount:2500, payment:"Cash"},
+  {turf:"Turf A", date:"2025-10-27", amount:2000, payment:"Card"},
+];
+
+// render functions
+function renderData() {
+  // Reviews
+  const revDisplay = document.getElementById('all-reviews');
+  revDisplay.innerHTML = "";
+  reviews.forEach((r,i)=>{
+    const div = document.createElement('div');
+    div.classList.add('feedback-box');
+    div.innerHTML = `“${r.review}” — ${r.name} <button onclick="deleteReview(${i})">Delete</button>`;
+    revDisplay.appendChild(div);
+  });
+  if(reviews.length===0) revDisplay.innerHTML="<p>No reviews yet.</p>";
+
+  // Complaints
+  const compDisplay = document.getElementById('all-complaints');
+  compDisplay.innerHTML = "";
+  complaints.forEach((c,i)=>{
+    const div = document.createElement('div');
+    div.classList.add('feedback-box');
+    div.innerHTML = `“${c.complain}” — ${c.name} <button onclick="deleteComplaint(${i})">Delete</button>`;
+    compDisplay.appendChild(div);
+  });
+  if(complaints.length===0) compDisplay.innerHTML="<p>No complaints yet.</p>";
+
+  // Bookings
+  const bookDisplay = document.getElementById('all-bookings');
+  bookDisplay.innerHTML = "";
+  bookings.forEach((b,i)=>{
+    const div = document.createElement('div');
+    div.classList.add('booking-box');
+    div.innerHTML = `Turf: ${b.turf} | Date: ${b.date} | Amount: ৳${b.amount} | Payment: ${b.payment} <button onclick="deleteBooking(${i})">Delete</button>`;
+    bookDisplay.appendChild(div);
+  });
+  if(bookings.length===0) bookDisplay.innerHTML="<p>No bookings yet.</p>";
+}
+
+// Delete functions
+function deleteReview(index){ reviews.splice(index,1); renderData(); }
+function deleteComplaint(index){ complaints.splice(index,1); renderData(); }
+function deleteBooking(index){ bookings.splice(index,1); renderData(); }
+
+renderData();
+</script>
+</body>
+</html>
